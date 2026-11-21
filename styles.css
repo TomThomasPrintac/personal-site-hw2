@@ -1,0 +1,531 @@
+/* =========================================
+   Colors and fonts used across the site
+   ========================================= */
+:root {
+  --pitch: #12402f;
+  --pitch-dark: #0b2b20;
+  --pitch-stripe: #164a37;
+  --lime: #c8f04a;
+  --chalk: #f6f4ec;
+  --ink: #13231d;
+  --muted: #55665f;
+  --card: #ffffff;
+  --line: rgba(246, 244, 236, 0.3);
+  --display: "Bebas Neue", Impact, sans-serif;
+  --body: "DM Sans", Arial, sans-serif;
+}
+
+/* =========================================
+   General elements
+   ========================================= */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  text-align: center;
+  font-family: var(--body);
+  color: var(--ink);
+  background-color: var(--chalk);
+}
+
+h1 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 7.5rem;
+  font-weight: normal;
+  line-height: 1;
+  letter-spacing: 2px;
+  color: var(--chalk);
+}
+
+h2 {
+  margin: 0 0 20px;
+  font-family: var(--display);
+  font-size: 3.2rem;
+  font-weight: normal;
+  letter-spacing: 1px;
+  color: var(--pitch);
+}
+
+h3 {
+  margin: 16px 0 8px;
+  font-size: 1.25rem;
+  color: var(--pitch);
+}
+
+p {
+  line-height: 1.8;
+}
+
+a {
+  color: var(--pitch);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+/* A dashed "halfway line" between the sections */
+hr {
+  width: 120px;
+  margin: 100px auto;
+  border: none;
+  border-top: 5px dashed var(--pitch);
+  opacity: 0.5;
+}
+
+/* =========================================
+   Top container: a football pitch
+   ========================================= */
+.top-container {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--pitch);
+  /* mowing stripes */
+  background-image: repeating-linear-gradient(90deg,
+      var(--pitch) 0 90px,
+      var(--pitch-stripe) 90px 180px);
+}
+
+.main-nav {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 32px;
+}
+
+.logo {
+  font-family: var(--display);
+  font-size: 2.2rem;
+  color: var(--chalk);
+}
+
+.logo span {
+  color: var(--lime);
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-links a {
+  font-weight: 500;
+  color: var(--chalk);
+}
+
+.nav-links a:hover,
+.logo:hover {
+  color: var(--lime);
+}
+
+.title-text {
+  position: relative;
+  z-index: 1;
+  padding: 90px 20px 30px;
+}
+
+/* the centre circle of the pitch, behind the title */
+.title-text::before {
+  content: "";
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  z-index: -1;
+  width: 380px;
+  height: 380px;
+  border: 3px solid var(--line);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.kicker {
+  display: inline-block;
+  margin: 0 0 18px;
+  padding: 4px 16px;
+  border-radius: 999px;
+  background-color: var(--lime);
+  color: var(--pitch-dark);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.title-text h2 {
+  margin-top: 8px;
+  font-family: var(--body);
+  font-size: 2rem;
+  font-style: italic;
+  letter-spacing: 0;
+  color: var(--lime);
+}
+
+.ball {
+  position: absolute;
+  z-index: 1;
+  width: 70px;
+  animation: float 4s ease-in-out infinite;
+}
+
+.ball-top {
+  top: 140px;
+  right: 18%;
+}
+
+.ball-bottom {
+  bottom: 110px;
+  left: 15%;
+  width: 50px;
+  animation-delay: -2s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-18px) rotate(25deg);
+  }
+}
+
+.goal {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 420px;
+  max-width: 80%;
+  margin: 20px auto 0;
+}
+
+/* =========================================
+   Middle container
+   ========================================= */
+.middle-container {
+  margin: 100px 0;
+  padding: 0 20px;
+}
+
+.profile-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  object-position: 50% 20%;
+  border: 6px solid var(--lime);
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px var(--pitch);
+  transition: transform 0.3s ease;
+}
+
+.profile-img:hover {
+  transform: rotate(-4deg) scale(1.04);
+}
+
+.intro {
+  max-width: 580px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: var(--muted);
+}
+
+/* Scoreboard: four numbers in a grid */
+.scoreboard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 900px;
+  margin: 60px auto 0;
+  padding: 0;
+  list-style: none;
+}
+
+.scoreboard li {
+  padding: 24px 16px;
+  border-radius: 14px;
+  background-color: var(--pitch-dark);
+  color: var(--chalk);
+}
+
+.score {
+  display: block;
+  font-family: var(--display);
+  font-size: 3.4rem;
+  line-height: 1;
+  color: var(--lime);
+}
+
+.label {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+/* Skills: cards in a grid */
+.parent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1000px;
+  margin: 50px auto 0;
+  text-align: left;
+}
+
+.card {
+  padding: 28px;
+  border-top: 5px solid var(--lime);
+  border-radius: 18px;
+  background-color: var(--card);
+  box-shadow: 0 10px 30px rgba(18, 64, 47, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(18, 64, 47, 0.16);
+}
+
+.card-icon {
+  width: 56px;
+  height: 56px;
+}
+
+.card p {
+  margin: 0;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+/* Experience: a timeline */
+.timeline {
+  max-width: 760px;
+  margin: 50px auto 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 24px;
+}
+
+.year {
+  flex: 0 0 130px;
+  padding-top: 2px;
+  font-family: var(--display);
+  font-size: 1.6rem;
+  text-align: right;
+  color: var(--pitch);
+}
+
+.timeline-content {
+  position: relative;
+  padding: 0 0 36px 28px;
+  border-left: 3px solid var(--pitch);
+}
+
+/* the dot on the line */
+.timeline-content::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: -10px;
+  width: 17px;
+  height: 17px;
+  border: 3px solid var(--pitch);
+  border-radius: 50%;
+  background-color: var(--lime);
+}
+
+.timeline-item:last-child .timeline-content {
+  padding-bottom: 0;
+}
+
+.timeline-content h3 {
+  margin: 0;
+}
+
+.company {
+  margin: 2px 0 6px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.timeline-content p:last-child {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Contact */
+.contact-message {
+  max-width: 520px;
+  margin: 30px auto 50px;
+  font-size: 1.1rem;
+  color: var(--muted);
+}
+
+.btn {
+  display: inline-block;
+  padding: 16px 36px;
+  border-radius: 999px;
+  background-color: var(--pitch);
+  color: var(--chalk);
+  font-weight: 700;
+  letter-spacing: 2px;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.btn:hover {
+  background-color: var(--lime);
+  color: var(--pitch-dark);
+  transform: translateY(-3px);
+}
+
+/* =========================================
+   Bottom container: footer
+   ========================================= */
+.bottom-container {
+  padding: 50px 20px 24px;
+  background-color: var(--pitch-dark);
+}
+
+.footer-link {
+  display: inline-block;
+  margin: 10px 18px;
+  font-weight: 500;
+  color: var(--chalk);
+}
+
+.footer-link:hover {
+  color: var(--lime);
+}
+
+.copyright {
+  margin: 30px 0 0;
+  font-size: 0.85rem;
+  color: rgba(246, 244, 236, 0.6);
+}
+
+/* =========================================
+   Responsive: tablets
+   ========================================= */
+@media (max-width: 900px) {
+  h1 {
+    font-size: 5.5rem;
+  }
+
+  .parent,
+  .scoreboard {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ball-top {
+    right: 8%;
+  }
+
+  .ball-bottom {
+    left: 6%;
+  }
+}
+
+/* =========================================
+   Responsive: phones
+   ========================================= */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 4rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  hr {
+    margin: 70px auto;
+  }
+
+  .main-nav {
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 16px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+  }
+
+  .title-text {
+    padding-top: 60px;
+  }
+
+  .title-text::before {
+    width: 260px;
+    height: 260px;
+  }
+
+  .title-text h2 {
+    font-size: 1.4rem;
+  }
+
+  .ball-top {
+    top: 150px;
+    width: 46px;
+  }
+
+  .ball-bottom {
+    bottom: 90px;
+    width: 36px;
+  }
+
+  .middle-container {
+    margin: 70px 0;
+    padding: 0 16px;
+  }
+
+  .parent {
+    grid-template-columns: 1fr;
+  }
+
+  .score {
+    font-size: 2.8rem;
+  }
+
+  .timeline-item {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .year {
+    flex-basis: auto;
+    text-align: left;
+  }
+}
+
+/* Turn off the floating balls for people who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .ball {
+    animation: none;
+  }
+}
